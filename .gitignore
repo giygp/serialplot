@@ -1,0 +1,15 @@
+# 构建产物与部署包
+build/
+deploy/
+deploy-qt5/
+
+# 第三方库源码与压缩包
+qwt-6.3.0/
+qwt-6.3.0.zip
+
+# IDE 配置与日志
+.qtcreator/
+*.user
+*.autosave
+CMakeLists.txt.user
+qt5-buildlog.txt
