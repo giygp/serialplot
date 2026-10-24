@@ -54,11 +54,11 @@ private:
     unsigned _numChannels;
     unsigned sampleSize;
     unsigned settingsInvalid;   /// settings are all valid if this is 0, if not no reading is done
-    QByteArray syncWord;
+    QByteArray syncWord;        // 同步字，比如 AA 55
     bool checksumEnabled;
-    bool hasSizeByte;
+    bool hasSizeByte;           // true=帧里有大小字段；false=固定长度帧
     bool isSizeField2B;         /// size field is 2 bytes
-    unsigned frameSize;
+    unsigned frameSize;         // 单个样本字节数
     bool debugModeEnabled;
 
     /// Checks the validity of syncWord and frameSize then shows an

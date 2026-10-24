@@ -201,10 +201,10 @@ unsigned FramedReader::readData()
     unsigned bytesAvailable;
     while ((bytesAvailable = _device->bytesAvailable()))
     {
-        if (!gotSync) // read sync word
+        if (!gotSync) // 找同步字
         {
             char c;
-            _device->getChar(&c);
+            _device->getChar(&c);           // 从缓冲区取 1 个字节
             numBytesRead++;
             if (c == syncWord[sync_i]) // correct sync byte?
             {
@@ -219,7 +219,7 @@ unsigned FramedReader::readData()
                 if (debugModeEnabled) qCritical() << "Missed " << sync_i+1 << "th sync byte.";
             }
         }
-        else if (hasSizeByte && !gotSize) // skipped if fixed frame size
+        else if (hasSizeByte && !gotSize) // 固定长度模式直接跳过这个状态
         {
             // read size field (1 or 2 bytes)
             if (isSizeField2B)
@@ -242,7 +242,7 @@ unsigned FramedReader::readData()
             else
             {
                 frameSize = 0;
-                _device->getChar((char*) &frameSize);
+                _device->getChar((char*) &frameSize);       // 只读 1 字节
                 numBytesRead++;
             }
 
@@ -274,7 +274,7 @@ unsigned FramedReader::readData()
             }
             else // read data bytes and checksum
             {
-                readFrameDataAndCheck();
+                readFrameDataAndCheck();        // 读出整帧 payload + 校验字节
                 numBytesRead += checksumEnabled ? frameSize+1 : frameSize;
                 reset();
             }
@@ -302,7 +302,15 @@ void FramedReader::readFrameDataAndCheck()
         _device->read(checksumEnabled ? frameSize+1 : frameSize);
         return;
     }
-
+/**************
+ * 
+ * payload（24 字节）：
+┌─────────────────────┬─────────────────────┬─────────────────────┬─────────────────────┐
+│ CH0   CH1   CH2     │ CH0   CH1   CH2     │ CH0   CH1   CH2     │ CH0   CH1   CH2     │
+│ 2字节 2字节 2字节    │  ...                │  ...                │  ...                │
+└─────────────────────┴─────────────────────┴─────────────────────┴─────────────────────┘
+   ←──── 第 0 包 ────→   ←──── 第 1 包 ────→   ←──── 第 2 包 ────→   ←──── 第 3 包 ────→
+ */
     // a package is 1 set of samples for all channels
     unsigned numOfPackagesToRead = frameSize / (_numChannels * sampleSize);
     SamplePack samples(numOfPackagesToRead, _numChannels);
@@ -327,6 +335,14 @@ void FramedReader::readFrameDataAndCheck()
     if (!checksumEnabled || checksumPassed)
     {
         // commit data
+        /*******
+ * _yData（一维 double 数组，连续内存）:
+┌─────────────────────┬─────────────────────┐
+│  CH0 的 ns 个样本     │  CH1 的 ns 个样本     │  ...
+└─────────────────────┴─────────────────────┘
+ ↑                     ↑
+ data(0)               data(1)
+ */
         feedOut(samples);
     }
     else
