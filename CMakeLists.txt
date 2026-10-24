@@ -54,67 +54,78 @@ else (WIN32)
 endif (WIN32)
 
 qt_add_executable(${PROGRAM_NAME} WIN32
+  # application entry
   src/main.cpp
-  src/mainwindow.cpp
-  src/portcontrol.cpp
-  src/plot.cpp
-  src/zoomer.cpp
-  src/scrollzoomer.cpp
-  src/scrollbar.cpp
-  src/hidabletabwidget.cpp
-  src/scalepicker.cpp
-  src/scalezoomer.cpp
-  src/portlist.cpp
-  src/snapshot.cpp
-  src/snapshotview.cpp
-  src/snapshotmanager.cpp
-  src/plotsnapshotoverlay.cpp
-  src/commandpanel.cpp
-  src/commandwidget.cpp
-  src/commandedit.cpp
-  src/dataformatpanel.cpp
-  src/plotcontrolpanel.cpp
-  src/recordpanel.cpp
-  src/datarecorder.cpp
-  src/tooltipfilter.cpp
-  src/sneakylineedit.cpp
-  src/stream.cpp
-  src/streamchannel.cpp
-  src/channelinfomodel.cpp
-  src/ringbuffer.cpp
-  src/ringbuffer.cpp
-  src/indexbuffer.cpp
-  src/linindexbuffer.cpp
-  src/readonlybuffer.cpp
-  src/framebufferseries.cpp
-  src/numberformatbox.cpp
-  src/endiannessbox.cpp
-  src/abstractreader.cpp
-  src/binarystreamreader.cpp
-  src/binarystreamreadersettings.cpp
-  src/asciireader.cpp
-  src/asciireadersettings.cpp
-  src/demoreader.cpp
-  src/demoreadersettings.cpp
-  src/framedreader.cpp
-  src/framedreadersettings.cpp
-  src/plotmanager.cpp
-  src/plotmenu.cpp
-  src/barplot.cpp
-  src/barchart.cpp
-  src/barscaledraw.cpp
-  src/numberformat.cpp
-  src/updatechecker.cpp
-  src/versionnumber.cpp
-  src/updatecheckdialog.cpp
-  src/samplepack.cpp
-  src/source.cpp
-  src/sink.cpp
-  src/samplecounter.cpp
-  src/ledwidget.cpp
-  src/datatextview.cpp
-  src/bpslabel.cpp
-  src/tcpcontrol.cpp   
+  src/app/mainwindow.cpp
+  # core data flow
+  src/core/channelinfomodel.cpp
+  src/core/samplecounter.cpp
+  src/core/samplepack.cpp
+  src/core/sink.cpp
+  src/core/source.cpp
+  src/core/stream.cpp
+  src/core/streamchannel.cpp
+  # frame buffers
+  src/buffers/framebufferseries.cpp
+  src/buffers/indexbuffer.cpp
+  src/buffers/linindexbuffer.cpp
+  src/buffers/readonlybuffer.cpp
+  src/buffers/ringbuffer.cpp
+  # data format readers
+  src/readers/abstractreader.cpp
+  src/readers/asciireader.cpp
+  src/readers/asciireadersettings.cpp
+  src/readers/binarystreamreader.cpp
+  src/readers/binarystreamreadersettings.cpp
+  src/readers/dataformatpanel.cpp
+  src/readers/demoreader.cpp
+  src/readers/demoreadersettings.cpp
+  src/readers/framedreader.cpp
+  src/readers/framedreadersettings.cpp
+  # plotting
+  src/plot/barplot.cpp
+  src/plot/barchart.cpp
+  src/plot/barscaledraw.cpp
+  src/plot/plot.cpp
+  src/plot/plotsnapshotoverlay.cpp
+  src/plot/plotcontrolpanel.cpp
+  src/plot/plotmanager.cpp
+  src/plot/plotmenu.cpp
+  src/plot/scalepicker.cpp
+  src/plot/scalezoomer.cpp
+  src/plot/scrollbar.cpp
+  src/plot/scrollzoomer.cpp
+  src/plot/zoomer.cpp
+  # connections (serial port / TCP)
+  src/connect/bpslabel.cpp
+  src/connect/portcontrol.cpp
+  src/connect/portlist.cpp
+  src/connect/tcpcontrol.cpp
+  # snapshots
+  src/snapshot/snapshot.cpp
+  src/snapshot/snapshotmanager.cpp
+  src/snapshot/snapshotview.cpp
+  # recording / export
+  src/record/datarecorder.cpp
+  src/record/datatextview.cpp
+  src/record/recordpanel.cpp
+  # command sending
+  src/command/commandedit.cpp
+  src/command/commandpanel.cpp
+  src/command/commandwidget.cpp
+  # reusable widgets
+  src/widgets/endiannessbox.cpp
+  src/widgets/hidabletabwidget.cpp
+  src/widgets/ledwidget.cpp
+  src/widgets/numberformat.cpp
+  src/widgets/numberformatbox.cpp
+  src/widgets/sneakylineedit.cpp
+  src/widgets/tooltipfilter.cpp
+  # update check
+  src/update/updatecheckdialog.cpp
+  src/update/updatechecker.cpp
+  src/update/versionnumber.cpp
+  # resources
   misc/windows_icon.rc
   ${RES_FILES}
   )

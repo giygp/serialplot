@@ -1,13 +1,13 @@
-# 构建产物与部署包
+# Build artifacts and deployment packages
 build/
 deploy/
 deploy-qt5/
 
-# 第三方库源码与压缩包
+# Third-party library sources and archives
 qwt-6.3.0/
 qwt-6.3.0.zip
 
-# IDE 配置与日志
+# IDE configuration and logs
 .qtcreator/
 *.user
 *.autosave

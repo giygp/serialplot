@@ -20,12 +20,12 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
 
-#include "samplepack.h"
-#include "source.h"
-#include "indexbuffer.h"
-#include "linindexbuffer.h"
-#include "ringbuffer.h"
-#include "readonlybuffer.h"
+#include "core/samplepack.h"
+#include "core/source.h"
+#include "buffers/indexbuffer.h"
+#include "buffers/linindexbuffer.h"
+#include "buffers/ringbuffer.h"
+#include "buffers/readonlybuffer.h"
 
 #include "test_helpers.h"
 

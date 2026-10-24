@@ -17,7 +17,7 @@
   along with serialplot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stream.h"
+#include "core/stream.h"
 
 #include "catch.hpp"
 #include "test_helpers.h"

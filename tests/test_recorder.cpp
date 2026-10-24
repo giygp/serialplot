@@ -21,7 +21,7 @@
 #include "catch.hpp"
 
 #include <QDir>
-#include "datarecorder.h"
+#include "record/datarecorder.h"
 #include "test_helpers.h"
 
 #define TEST_FILE_NAME   "sp_test_recording.csv"

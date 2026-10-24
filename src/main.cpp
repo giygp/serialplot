@@ -22,9 +22,9 @@
 #include <QIcon>
 #include <iostream>
 
-#include "mainwindow.h"
-#include "tooltipfilter.h"
-#include "version.h"
+#include "app/mainwindow.h"
+#include "widgets/tooltipfilter.h"
+#include "app/version.h"
 
 MainWindow* pMainWindow = nullptr;
 

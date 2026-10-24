@@ -1,8 +1,8 @@
 #ifndef TEST_HELPERS_H
 #define TEST_HELPERS_H
 
-#include "source.h"
-#include "sink.h"
+#include "core/source.h"
+#include "core/sink.h"
 
 class TestSink : public Sink
 {

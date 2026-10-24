@@ -23,10 +23,10 @@
 
 #include <QSignalSpy>
 #include <QBuffer>
-#include "binarystreamreader.h"
-#include "asciireader.h"
-#include "framedreader.h"
-#include "demoreader.h"
+#include "readers/binarystreamreader.h"
+#include "readers/asciireader.h"
+#include "readers/framedreader.h"
+#include "readers/demoreader.h"
 
 #include "test_helpers.h"
 
