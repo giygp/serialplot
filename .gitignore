@@ -13,3 +13,8 @@ qwt-6.3.0.zip
 *.autosave
 CMakeLists.txt.user
 qt5-buildlog.txt
+
+# Local-only materials (do not upload)
+win7-drivers/
+结项报告材料/
+.vscode/
